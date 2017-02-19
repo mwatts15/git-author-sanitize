@@ -88,10 +88,10 @@ ensure_author_map () {
 rewrite () {
     orig=$(git rev-list --max-count=1 HEAD)
     echo $orig > orig-ref
-    while IFS=':' read old_name old_email new; do
-        echo "$old_email $new"
-        rewrite_author $old_email "$old_name" $new
-    done < author-map
+    #while IFS=':' read old_name old_email new; do
+        #echo "$old_email $new"
+        #rewrite_author $old_email "$old_name" $new
+    #done < author-map
     sanitize_author_names "$old_name" "$old_name" $new
     git diff $orig
 }
