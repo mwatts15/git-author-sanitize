@@ -8,7 +8,7 @@ interactive=
 
 restore_ref () {
     if [ -f orig-ref ] ; then
-        orig=$(git rev-list --max-count=1 HEAD)
+        orig=$(git rev-parse HEAD)
         echo $orig > rewrite-ref
         git reset --hard $(cat orig-ref) 
         rm orig-ref
@@ -86,7 +86,7 @@ ensure_author_map () {
 }
 
 rewrite () {
-    orig=$(git rev-list --max-count=1 HEAD)
+    orig=$(git rev-parse HEAD)
     echo $orig > orig-ref
     while IFS=':' read old_name old_email new; do
         echo "$old_email $new"
